@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { DataTable } from "primereact/datatable"
 import { Column } from "primereact/column"
 import { Paginator } from "primereact/paginator"
@@ -33,7 +33,7 @@ function App() {
   const [data, setData] = useState<Artwork[]>([])
   const [selectedRows, setSelectedRows] = useState<Artwork[]>([])
   const [first, setFirst] = useState(0)
-  const [rows, setRows] = useState(12)
+  const [rows] = useState(12)
   const [total, setTotal] = useState(0)
 
   const [rowsCount, setRowsCount] = useState("0")
@@ -123,6 +123,7 @@ function App() {
           onSelectionChange={(e) => setSelectedRows(e.value)}
           dataKey="id"
           tableStyle={{ minWidth: "60rem" }}
+          selectionMode="multiple"
         >
           <Column selectionMode="multiple" headerStyle={{ width: "3rem" }} />
           <Column field="id" header={idHeader} />
